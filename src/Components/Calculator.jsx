@@ -3,14 +3,18 @@ import { Container, Row, Col, Button } from 'react-bootstrap'
 
 export const Calculator = () => {
     const [value, setValue] = useState("0")
-    const CustomBotton = (props) => {
-        const clickFunction = (e) => {
-            if (value === "0") {
-                setValue(e.target.value)
-            }
-            else {setValue(value+e.target.value)}
+    const clear = () => {
+        setValue("0")
+    }
+    const clickFunction = (e) => {
+        if (value === "0") {
+            setValue(e.target.value)
         }
-        return <Button value={props.name} onClick={(e) => clickFunction(e)} className='w-100'>{props.name}</Button>
+        else {setValue(value+e.target.value)}
+    }
+    const CustomBotton = (props) => {
+        
+        return <Button value={props.name} onClick={props.function} className='w-100'>{props.name}</Button>
     }
   return (
     <Container className='w-50'>
@@ -19,7 +23,7 @@ export const Calculator = () => {
         </Row>
         <Row className='mb-2'>
             <Col md={3}>
-                <CustomBotton name="C" />
+                <CustomBotton name="C" function={clear}/>
             </Col>
             <Col>
                 <CustomBotton name="CE" />
@@ -33,7 +37,7 @@ export const Calculator = () => {
         </Row>
         <Row className='mb-2'>
             <Col>
-                <CustomBotton name="7" />
+                <CustomBotton name="7" function={(e) => clickFunction(e)}/>
             </Col>
             <Col>
                 <CustomBotton name="8" />
