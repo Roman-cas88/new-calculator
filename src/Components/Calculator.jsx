@@ -2,9 +2,15 @@ import React, { useState } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 
 export const Calculator = () => {
-    const [value, setValue] = useState("")
+    const [value, setValue] = useState("0")
     const CustomBotton = (props) => {
-        return <Button value={props.name} onClick={(e) => setValue(e.target.value + value)} className='w-100'>{props.name}</Button>
+        const clickFunction = (e) => {
+            if (value === "0") {
+                setValue(e.target.value)
+            }
+            else {setValue(value+e.target.value)}
+        }
+        return <Button value={props.name} onClick={(e) => clickFunction(e)} className='w-100'>{props.name}</Button>
     }
   return (
     <Container className='w-50'>
