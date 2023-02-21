@@ -10,8 +10,15 @@ export const Calculator = () => {
         if (value === "0") {
             setValue(e.target.value)
         }
-        else {setValue(value+e.target.value)}
+        
+        // else if (value === ".") {
+        //     setValue("0.")
+        // } 
+        else 
+        {setValue(value+e.target.value)}
     }
+
+    
     const CustomBotton = (props) => {
         
         return <Button value={props.name} onClick={props.function} className='w-100'>{props.name}</Button>
@@ -32,49 +39,49 @@ export const Calculator = () => {
                 <CustomBotton name="%" />
             </Col>
             <Col>
-                <CustomBotton name="/" />
+                <CustomBotton name="/" function={(e) => clickFunction(e)} />
             </Col>
         </Row>
         <Row className='mb-2'>
             <Col>
-                <CustomBotton name="7" function={(e) => clickFunction(e)}/>
+                <CustomBotton name="7" function={(e) => clickFunction(e)} />
             </Col>
             <Col>
-                <CustomBotton name="8" />
+                <CustomBotton name="8" function={(e) => clickFunction(e)} />
             </Col>
             <Col>
-                <CustomBotton name="9" />
+                <CustomBotton name="9" function={(e) => clickFunction(e)} />
             </Col>
             <Col>
-                <CustomBotton name="X" />
-            </Col>
-        </Row>
-        <Row className='mb-2'>
-            <Col>
-                <CustomBotton name="4" />
-            </Col>
-            <Col>
-                <CustomBotton name="5" />
-            </Col>
-            <Col>
-                <CustomBotton name="6" />
-            </Col>
-            <Col>
-                <CustomBotton name="-" />
+                <CustomBotton name="*" function={(e) => clickFunction(e)} />
             </Col>
         </Row>
         <Row className='mb-2'>
             <Col>
-                <CustomBotton name="1" />
+                <CustomBotton name="4" function={(e) => clickFunction(e)} />
             </Col>
             <Col>
-                <CustomBotton name="2" />
+                <CustomBotton name="5" function={(e) => clickFunction(e)} />
             </Col>
             <Col>
-                <CustomBotton name="3" />
+                <CustomBotton name="6" function={(e) => clickFunction(e)} />
             </Col>
             <Col>
-                <CustomBotton name="+" />
+                <CustomBotton name="-" function={(e) => clickFunction(e)} />
+            </Col>
+        </Row>
+        <Row className='mb-2'>
+            <Col>
+                <CustomBotton name="1" function={(e) => clickFunction(e)} />
+            </Col>
+            <Col>
+                <CustomBotton name="2" function={(e) => clickFunction(e)} />
+            </Col>
+            <Col>
+                <CustomBotton name="3" function={(e) => clickFunction(e)} />
+            </Col>
+            <Col>
+                <CustomBotton name="+" function={(e) => clickFunction(e)} />
             </Col>
         </Row>
         <Row className='mb-2'>
@@ -82,10 +89,10 @@ export const Calculator = () => {
                 <CustomBotton name="+/-" />
             </Col>
             <Col>
-                <CustomBotton name="0" />
+                <CustomBotton name="0" function={(e) => clickFunction(e)} />
             </Col>
             <Col>
-                <CustomBotton name="." />
+                <CustomBotton name="." function={(e) => clickFunction(e)} />
             </Col>
             <Col>
                 <CustomBotton name="=" />
