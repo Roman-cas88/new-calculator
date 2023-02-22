@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 
 export const Calculator = () => {
@@ -16,7 +16,8 @@ export const Calculator = () => {
             setValue(eval(value))
         } catch(error) {
             setValue("Error")
-        }
+            }
+        
     }
     const clearFunction = () => {
         try {
@@ -30,11 +31,31 @@ export const Calculator = () => {
     }
     const convertFunction = () => {
         if (!isNaN(value)) {
-            setValue(Math.abs(value))
+            if (value < 0) {
+                setValue(Math.abs(value))
+            }
+            else if (value > 0) {
+                setValue(-Math.abs(value))
+            }
+            else return value
         }
-        else {return value}
+        else return value
+    }
+    const percentFunction = () => {
+        try {
+            setValue(eval(value) / 100)
+        } catch(error) {
+            setValue("Error")
+            }
     }
 
+    useEffect(() => {
+      if (value.length > 1 && value.charAt(0) === "0" && value.charAt(1) !== ".") {
+        setValue(value.slice(1))
+      }
+    
+    }, [value])
+    
     const CustomBotton = (props) => {
         return <Button value={props.name} variant={props.variant} onClick={props.function} className='w-100'>{props.name}</Button>
     }
@@ -48,7 +69,7 @@ export const Calculator = () => {
                 <CustomBotton name="C/CE" variant={"danger"} function={clearFunction}/>
             </Col>
             <Col>
-                <CustomBotton name="%" />
+                <CustomBotton name="%" function={percentFunction}/>
             </Col>
             <Col>
                 <CustomBotton name="/" function={(e) => clickFunction(e)} />
