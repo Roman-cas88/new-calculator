@@ -2,38 +2,50 @@ import React, { useState } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 
 export const Calculator = () => {
-    const [value, setValue] = useState("0")
-    const clear = () => {
-        setValue("0")
-    }
+    const [value, setValue] = useState("")
+
     const clickFunction = (e) => {
-        if (value === "0") {
-            setValue(e.target.value)
-        }
-        
-        // else if (value === ".") {
-        //     setValue("0.")
-        // } 
+        if (value === ".") {
+            setValue("0.")
+        } 
         else 
         {setValue(value+e.target.value)}
     }
+    const equalFunction = () => {
+        try {
+            setValue(eval(value))
+        } catch(error) {
+            setValue("Error")
+        }
+    }
+    const clearFunction = () => {
+        try {
+            if (value==="Error") {
+                setValue("")
+            }
+            else {setValue(value.slice(0, -1))}
+        } catch (error) {
+            setValue("")
+        }
+    }
+    const convertFunction = () => {
+        if (!isNaN(value)) {
+            setValue(Math.abs(value))
+        }
+        else {return value}
+    }
 
-    
     const CustomBotton = (props) => {
-        
-        return <Button value={props.name} onClick={props.function} className='w-100'>{props.name}</Button>
+        return <Button value={props.name} variant={props.variant} onClick={props.function} className='w-100'>{props.name}</Button>
     }
   return (
     <Container className='w-50'>
         <Row className='mb-3'>
-            <input type="text" value={value} />
+            <input type="text" className='form-control form-control-lg text-info' value={value} onChange={(e)=>setValue(e.target.value)}/>
         </Row>
         <Row className='mb-2'>
-            <Col md={3}>
-                <CustomBotton name="C" function={clear}/>
-            </Col>
-            <Col>
-                <CustomBotton name="CE" />
+            <Col md={3} lg={6}>
+                <CustomBotton name="C/CE" variant={"danger"} function={clearFunction}/>
             </Col>
             <Col>
                 <CustomBotton name="%" />
@@ -86,7 +98,7 @@ export const Calculator = () => {
         </Row>
         <Row className='mb-2'>
             <Col>
-                <CustomBotton name="+/-" />
+                <CustomBotton name="+/-" function={convertFunction}/>
             </Col>
             <Col>
                 <CustomBotton name="0" function={(e) => clickFunction(e)} />
@@ -95,7 +107,7 @@ export const Calculator = () => {
                 <CustomBotton name="." function={(e) => clickFunction(e)} />
             </Col>
             <Col>
-                <CustomBotton name="=" />
+                <CustomBotton name="=" variant={"success"} function={equalFunction} />
             </Col>
         </Row>
     </Container>
