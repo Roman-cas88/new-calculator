@@ -60,74 +60,80 @@ export const Calculator = () => {
         return <Button value={props.name} variant={props.variant} onClick={props.function} className='w-100'>{props.name}</Button>
     }
   return (
-    <Container className='w-50'>
-        <Row className='mb-3'>
-            <input type="text" className='form-control form-control-lg text-info' value={value} onChange={(e)=>setValue(e.target.value)}/>
+    <Container style={{backgroundColor:"rgba(255,230,156,0.5)", maxWidth:"250px"}} className='border border-4 border-primary rounded'>
+        <Row className='mx-1 my-3 '>
+            <input 
+                style={{backgroundColor:"rgba(207,244,252,0.5)"}} 
+                type="text" 
+                className='form-control form-control-lg text-info border-primary' 
+                value={value} 
+                onChange={(e)=>setValue(e.target.value)}
+            />
         </Row>
         <Row className='mb-2'>
-            <Col md={3} lg={6}>
+            <Col className='px-1' xs={6} sm={6} md={6} lg={6}>
                 <CustomBotton name="C/CE" variant={"danger"} function={clearFunction}/>
             </Col>
-            <Col>
+            <Col className='px-1' xs={3} sm={3} md={3} lg={3}>
                 <CustomBotton name="%" function={percentFunction}/>
             </Col>
-            <Col>
+            <Col className='px-1' xs={3} sm={3} md={3} lg={3}>
                 <CustomBotton name="/" function={(e) => clickFunction(e)} />
             </Col>
         </Row>
         <Row className='mb-2'>
-            <Col>
+            <Col className='px-1' xs={3} sm={3} md={3} lg={3}>
                 <CustomBotton name="7" function={(e) => clickFunction(e)} />
             </Col>
-            <Col>
+            <Col className='px-1' xs={3} sm={3} md={3} lg={3}>
                 <CustomBotton name="8" function={(e) => clickFunction(e)} />
             </Col>
-            <Col>
+            <Col className='px-1' xs={3} sm={3} md={3} lg={3}>
                 <CustomBotton name="9" function={(e) => clickFunction(e)} />
             </Col>
-            <Col>
+            <Col className='px-1' xs={3} sm={3} md={3} lg={3}>
                 <CustomBotton name="*" function={(e) => clickFunction(e)} />
             </Col>
         </Row>
         <Row className='mb-2'>
-            <Col>
+            <Col className='px-1' xs={3} sm={3} md={3} lg={3}>
                 <CustomBotton name="4" function={(e) => clickFunction(e)} />
             </Col>
-            <Col>
+            <Col className='px-1' xs={3} sm={3} md={3} lg={3}>
                 <CustomBotton name="5" function={(e) => clickFunction(e)} />
             </Col>
-            <Col>
+            <Col className='px-1' xs={3} sm={3} md={3} lg={3}>
                 <CustomBotton name="6" function={(e) => clickFunction(e)} />
             </Col>
-            <Col>
+            <Col className='px-1' xs={3} sm={3} md={3} lg={3}>
                 <CustomBotton name="-" function={(e) => clickFunction(e)} />
             </Col>
         </Row>
         <Row className='mb-2'>
-            <Col>
+            <Col className='px-1' xs={3} sm={3} md={3} lg={3}>
                 <CustomBotton name="1" function={(e) => clickFunction(e)} />
             </Col>
-            <Col>
+            <Col className='px-1' xs={3} sm={3} md={3} lg={3}>
                 <CustomBotton name="2" function={(e) => clickFunction(e)} />
             </Col>
-            <Col>
+            <Col className='px-1' xs={3} sm={3} md={3} lg={3}>
                 <CustomBotton name="3" function={(e) => clickFunction(e)} />
             </Col>
-            <Col>
+            <Col className='px-1' xs={3} sm={3} md={3} lg={3}>
                 <CustomBotton name="+" function={(e) => clickFunction(e)} />
             </Col>
         </Row>
         <Row className='mb-2'>
-            <Col>
+            <Col className='px-1' xs={3} sm={3} md={3} lg={3}>
                 <CustomBotton name="+/-" function={convertFunction}/>
             </Col>
-            <Col>
+            <Col className='px-1' xs={3} sm={3} md={3} lg={3}>
                 <CustomBotton name="0" function={(e) => clickFunction(e)} />
             </Col>
-            <Col>
+            <Col className='px-1' xs={3} sm={3} md={3} lg={3}>
                 <CustomBotton name="." function={(e) => clickFunction(e)} />
             </Col>
-            <Col>
+            <Col className='px-1' xs={3} sm={3} md={3} lg={3}>
                 <CustomBotton name="=" variant={"success"} function={equalFunction} />
             </Col>
         </Row>
