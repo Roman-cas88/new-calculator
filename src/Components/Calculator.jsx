@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 
 export const Calculator = () => {
-    const [value, setValue] = useState("")
+    const [value, setValue] = useState("0")
 
     const clickFunction = (e) => {
         if (value === ".") {
@@ -22,11 +22,11 @@ export const Calculator = () => {
     const clearFunction = () => {
         try {
             if (value==="Error") {
-                setValue("")
+                setValue("0")
             }
             else {setValue(value.slice(0, -1))}
         } catch (error) {
-            setValue("")
+            setValue("0")
         }
     }
     const convertFunction = () => {
@@ -53,7 +53,7 @@ export const Calculator = () => {
       if (value.length > 1 && value.charAt(0) === "0" && value.charAt(1) !== ".") {
         setValue(value.slice(1))
       }
-    
+      else if (value === "") {setValue("0")}    
     }, [value])
     
     const CustomBotton = (props) => {
