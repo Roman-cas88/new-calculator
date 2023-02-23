@@ -50,7 +50,13 @@ export const Calculator = () => {
     }
 
     useEffect(() => {
-      if (value.length > 1 && value.charAt(0) === "0" && value.charAt(1) !== ".") {
+      if (value.length > 1 && 
+        value.charAt(0) === "0" && 
+        value.charAt(1) !== "." && 
+        value.charAt(1) !== "+" && 
+        value.charAt(1) !== "-" && 
+        value.charAt(1) !== "*" && 
+        value.charAt(1) !== "/") {
         setValue(value.slice(1))
       }
       else if (value === "") {setValue("0")}    
